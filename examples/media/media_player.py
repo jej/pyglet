@@ -375,6 +375,13 @@ def main(target, dbg_file, debug):
     player.play()
     window.gui_update_state()
 
+    display = pyglet.canvas.get_display()
+    screen = display.get_default_screen()
+    template = pyglet.gl.Config()
+    config = screen.get_best_config(template)
+    context = config.create_context(None)
+    winbug = pyglet.window.Window(context=context, caption="Move me please...")
+
     pyglet.app.run()
 
 
